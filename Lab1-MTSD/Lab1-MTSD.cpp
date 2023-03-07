@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <exception>
 #include "QuadraticEquation.h"
 
 int main()
@@ -40,19 +41,26 @@ int main()
         std::wcout << L"\x1b[0mc = \x1b[1;32m";
         std::wcout << L"\x1b[0m";
     }
+    std::wcout << L"\x1b[0m";
 
-    QuadraticEquation QE(a, b, c);
-
-    wchar_t buff[256]{};
-    QE.GetStrEquation(buff);
-
-    int rootNumber = QE.GetRootsNumber();
-
-    std::wcout << L"Equation is: " << buff << std::endl;
-    std::wcout << L"There are " << rootNumber << L" roots" << std::endl;
-
+    wchar_t eqBuff[256]{};
+    int rootNumber = 0;
     double x1 = 0, x2 = 0;
-    QE.GetRoots(&x1, &x2);
+
+    try {
+        QuadraticEquation QE(a, b, c);
+
+        QE.GetStrEquation(eqBuff);
+        rootNumber = QE.GetRootsNumber();
+        QE.GetRoots(&x1, &x2);
+    }
+    catch (std::exception e) {
+        std::wcout << e.what();
+        return 0;
+    }
+
+    std::wcout << L"Equation is: " << eqBuff << std::endl;
+    std::wcout << L"There are " << rootNumber << L" roots" << std::endl;
 
     if (rootNumber >= 1)
         std::wcout << L"x1 = " << x1 << std::endl;

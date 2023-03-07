@@ -1,11 +1,12 @@
 #include "QuadraticEquation.h"
 #include <stdio.h>
 #include <cmath>
+#include <exception>
 
 QuadraticEquation::QuadraticEquation(int a, int b, int c) : a(a), b(b), c(c)
 {
 	if (a == 0)
-		throw L"Error. a cannot be 0";
+		throw std::exception("Error. a cannot be 0\n");
 }
 
 int QuadraticEquation::GetDiscriminant()
