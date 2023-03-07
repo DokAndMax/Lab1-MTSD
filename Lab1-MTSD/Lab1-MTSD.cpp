@@ -44,7 +44,10 @@ int main(int argc, char* argv[])
         std::wcout << L"x1 = " << x1 << std::endl;
     if (rootNumber >= 2)
         std::wcout << L"x2 = " << x2 << std::endl;
-
+    
+    std::cout << "Press enter to exit...";
+    while ((getchar()) != '\n');
+    std::getchar();
 }
 
 bool GetFromInput(int* a, int* b, int* c) {
