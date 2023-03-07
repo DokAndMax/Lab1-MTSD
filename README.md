@@ -1,7 +1,8 @@
 # Quadratic Equation Solver
 
-The program allows you in a convenient mode (there are two modes: interactive and reading from a file) to get the general form of a quadratic equation based on the given coefficients, to find out how many roots the equation contains, and to get the roots of a quadratic equation.
+The program allows you in a convenient mode (there are two modes: interactive and reading from a file aka non-interactive mode) to get the general form of a quadratic equation based on the given coefficients, to find out how many roots the equation contains, and to get the roots of a quadratic equation.
 
+### Non-interactive mode
 To use reading from a file mode, you must specify a path to a properly formatted file.
 A properly formatted file looks like this:
 > %1[Space]%2[Space]%3[New line]
