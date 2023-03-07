@@ -5,8 +5,22 @@
 #include <exception>
 #include "QuadraticEquation.h"
 
-int main()
+int main(int argc, char* argv[])
 {
+    if(argc == 2)
+    { 
+        FILE* stream = nullptr;
+        fopen_s(&stream, argv[1], "r");
+        if (stream == NULL) {
+            std::cout << "file " << argv[1] << " does not exist";
+            return 0;
+        }
+        int a = 0, b = 0, c = 0;
+        if(fwscanf_s(stream, L"%d %d %d\n", &a, &b, &c) == 0)
+            std::cout << "invalid file format";
+    }
+
+
     int a = 0, b = 0, c = 0;
 
     std::wcout << L"\x1b[0ma = \x1b[1;32m";
