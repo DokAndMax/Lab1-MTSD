@@ -2,10 +2,63 @@
 //
 
 #include <iostream>
+#include "QuadraticEquation.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int a = 0, b = 0, c = 0;
+
+    std::wcout << L"\x1b[0ma = \x1b[1;32m";
+    while (wscanf_s(L"%d", &a) != 1) {
+        wchar_t inputbuff[256]{};
+        wscanf_s(L"%s", inputbuff, 256);
+        std::wcout << L"Error. Expected a valid real number, got " << inputbuff << " instead" << std::endl;
+        while ((getchar()) != '\n');
+
+        std::wcout << L"\x1b[0ma = \x1b[1;32m";
+        std::wcout << L"\x1b[0m";
+    }
+
+    std::wcout << L"\x1b[0mb = \x1b[1;32m";
+    while (wscanf_s(L"%d", &b) != 1) {
+        wchar_t inputbuff[256]{};
+        wscanf_s(L"%s", inputbuff, 256);
+        std::wcout << L"Error. Expected a valid real number, got " << inputbuff << " instead" << std::endl;
+        while ((getchar()) != '\n');
+
+        std::wcout << L"\x1b[0mb = \x1b[1;32m";
+        std::wcout << L"\x1b[0m";
+    }
+
+    std::wcout << L"\x1b[0mc = \x1b[1;32m";
+    while (wscanf_s(L"%d", &c) != 1) {
+        wchar_t inputbuff[256]{};
+        wscanf_s(L"%s", inputbuff, 256);
+        std::wcout << L"Error. Expected a valid real number, got " << inputbuff << " instead" << std::endl;
+        while ((getchar()) != '\n');
+
+        std::wcout << L"\x1b[0mc = \x1b[1;32m";
+        std::wcout << L"\x1b[0m";
+    }
+
+    QuadraticEquation QE(a, b, c);
+
+    wchar_t buff[256]{};
+    QE.GetStrEquation(buff);
+
+    int rootNumber = QE.GetRootsNumber();
+
+    std::wcout << L"Equation is: " << buff << std::endl;
+    std::wcout << L"There are " << rootNumber << L" roots" << std::endl;
+
+    double x1 = 0, x2 = 0;
+    QE.GetRoots(&x1, &x2);
+
+    if (rootNumber >= 1)
+        std::wcout << L"x1 = " << x1 << std::endl;
+    if (rootNumber >= 2)
+        std::wcout << L"x2 = " << x2 << std::endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
